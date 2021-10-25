@@ -19,7 +19,7 @@ import com.piriurna.messenger.data.payloads.response.MessageResponse;
 import com.piriurna.messenger.data.service.MessageService;
 
 @RestController
-@RequestMapping("/messages")
+@RequestMapping("/Messages")
 public class MessageController {
 
 	@Autowired
@@ -40,8 +40,8 @@ public class MessageController {
     
     @PostMapping("/add")
     public ResponseEntity<MessageResponse> addMessage( @RequestBody MessageRequest message) {
-        MessageResponse newEmployee = messageService.createMessage(message);
-        return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
+        MessageResponse newMessage = messageService.createMessage(message);
+        return new ResponseEntity<>(newMessage, HttpStatus.CREATED);
     }
     
     @DeleteMapping("/delete/{id}")

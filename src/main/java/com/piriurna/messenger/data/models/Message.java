@@ -1,25 +1,31 @@
 package com.piriurna.messenger.data.models;
 
-import java.sql.Date;
 import java.util.Objects;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@Table(name = "Messages")
 public class Message {
     
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
   
-    private Integer user_id;
+    private Integer userId;
   
-    private Integer chat_id;
+    private Integer chatId;
   
-    private Date created;
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date created;
   
     private String text;
   
@@ -28,8 +34,8 @@ public class Message {
     public String toString() {
         return "Message{" +
                 "id=" + id +
-                ", user_id='" + user_id + '\'' +
-                ", chat_id='" + chat_id + '\'' +
+                ", user_id='" + userId + '\'' +
+                ", chat_id='" + chatId + '\'' +
                 ", created='" + created + '\'' +
                 ", text='" + text + '\'' +
                 '}';
@@ -40,35 +46,35 @@ public class Message {
 	    if (this == o) return true;
 	    if (o == null || getClass() != o.getClass()) return false;
 	    Message message = (Message) o;
-	    return Objects.equals(message.id, id) && Objects.equals(user_id, message.user_id) && Objects.equals(chat_id, message.chat_id) && Objects.equals(created, message.created) && Objects.equals(text, message.text);
+	    return Objects.equals(message.id, id) && Objects.equals(userId, message.userId) && Objects.equals(chatId, message.chatId) && Objects.equals(created, message.created) && Objects.equals(text, message.text);
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, user_id, chat_id, created, text);
+		return Objects.hash(id, userId, chatId, created, text);
 	}
 
 	public Integer getUserId() {
-		return user_id;
+		return userId;
 	}
 	
-	public void setUserId(Integer user_id) {
-		this.user_id = user_id;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	
 	public Integer getChatId() {
-		return chat_id;
+		return chatId;
 	}
 	
 	public void setChatId(Integer chat_id) {
-		this.chat_id = chat_id;
+		this.chatId = chat_id;
 	}
 	
-	public Date getCreated() {
+	public java.util.Date getCreated() {
 		return created;
 	}
 	
-	public void setCreated(Date created) {
+	public void setCreated(java.util.Date created) {
 		this.created = created;
 	}
 	

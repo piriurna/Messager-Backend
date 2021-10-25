@@ -1,5 +1,6 @@
 package com.piriurna.messenger.data.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class MessageServiceImpl implements MessageService {
 	public MessageResponse createMessage(MessageRequest messageRequest) {
 		Message message = new Message();
 		message.setChatId(messageRequest.getChatId());
-		message.setCreated(messageRequest.getCreated());
+		message.setCreated(java.sql.Timestamp.from(Calendar.getInstance().toInstant()));
 		message.setUserId(messageRequest.getUserId());
 		message.setText(messageRequest.getText());
 		
